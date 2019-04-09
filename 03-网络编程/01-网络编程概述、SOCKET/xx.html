@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="theme-color" content="#000000">
+    <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+    -->
+    <link rel="shortcut icon" href="./favicon1.ico">
+    <link rel="stylesheet" href="./style.css">
+    <style type="text/css">
+    </style>
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title></title>
+    <style>
+      html{
+        -webkit-touch-callout:none;  /*系统默认菜单被禁用*/   
+        -webkit-user-select:none; /*webkit浏览器*/   
+        -khtml-user-select:none; /*早期浏览器*/   
+        -moz-user-select:none;/*火狐*/   
+        -ms-user-select:none; /*IE10*/   
+        user-select:none;
+      }
+      input {      
+          -webkit-user-select:auto; /*webkit浏览器*/     
+      }  
+    </style>
+
+  </head>
+  <script>
+  </script>
+  <body>
+    <script>
+      //声明_czc对象:
+      var _czc = _czc || [];
+      //绑定siteid，请用您的siteid替换下方"XXXXXXXX"部分
+      _czc.push(["_setAccount", "1275332383"]);
+    </script>
+
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    <div class="independenceDown">
+      <div id="twoContainer" class="twoContainer">
+        <div class="topLogo">
+          <div class="logoImgHongdan">
+
+          </div>
+          <div class="appName">红单</div>
+
+          <div class="desktop">正在安装，请在桌面查看 ···</div>
+        </div>
+        <div class="trust">
+          <div class="topText">安装后请完成以下步骤：</div>
+          <div class="textContent">
+            <div class="bottomText">1，在“通用-设备管理”中到找到“<span class="red">EXOL d.o.o.</span>”</div>
+            <div class="operation do1 doH1"></div>
+          </div>
+          <div class="textContent">
+            <div class="bottomText">2，点击信任</div>
+            <div class="operation do2 doH2"></div>
+          </div>
+        </div>
+        <div class="enterSetting">
+          <div id="settingButton" class="settingButton">
+            进入设备管理
+          </div>
+        </div>
+      </div>
+
+      <div id="oneContainer" class="oneContainer">
+        <div id="noticex" class="notice">
+            请点击右上角<br/>
+            在Safari中打开
+        </div> 
+
+        <div class="top">
+          <div class="logoHongDan">
+
+          </div>
+          <div class="text"></div>
+          <div class="phone"></div>
+        </div>
+        <div class="downloadButton">
+          <div id="androidButton" class="android button"><a></a></div>
+          <div id="iosButton" class="ios button"><a></a></div>
+          <div id="enterHome" class="enterHome">进入网页版</div>
+        </div>
+      </div>
+
+    </div>
+    <div id="downMask" class="downMask">
+      <div id="showDownloading" class="maskText">正在下载，请在浏览器中查看</div>
+      <div id="canInWeChat" class="maskText">不支持在微信内下载安装</div>
+      <div id="userAndroid" class="maskText">请使用Android下载</div>
+    </div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+  <script>
+      var android = ''
+      var isIos = false
+      var downed = false
+      var ios = ''
+      var androidButton = document.getElementById('androidButton')
+      var iosButton = document.getElementById('iosButton')
+      var settingButton = document.getElementById('settingButton')
+      var enterHome = document.getElementById('enterHome')
+
+      androidButton.addEventListener('click', downLoadAndroid, false)
+      iosButton.addEventListener('click', downloadIos, false)
+      settingButton.addEventListener('click', trustMe, false)
+      enterHome.addEventListener('click', goHongDan, false)
+
+      setTimeout(function() {
+        var script = document.createElement('script')  
+        script.src = 'https://s22.cnzz.com/z_stat.php?id=1274860752&web_id=1275332383'  
+        script.language = 'JavaScript'  
+        document.body.appendChild(script) 
+      }, 100)
+
+      var browser = {
+        versions: function () {
+            let u = navigator.userAgent
+            return { //移动终端浏览器版本信息
+              trident: u.indexOf('Trident') > -1, //IE内核
+              presto: u.indexOf('Presto') > -1, //opera内核
+              webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+              gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') === -1, //火狐内核
+              mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+              ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+              android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或uc浏览器
+              iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+              iPad: u.indexOf('iPad') > -1, //是否iPad
+              webApp: u.indexOf('Safari') === -1 //是否web应该程序，没有头部与底部
+            }
+        }(),
+        language: (navigator.browserLanguage || navigator.language).toLowerCase()
+      }
+
+      function downloadIos() {
+        // window._czc.push(["_trackEvent",'红单下载页面',this.state.channelTag, 'ios'])
+        if (browser.versions.android) {
+          return showMask("userAndroid")
+        } else if (isWechat()) {
+          return showMask("canInWeChat")
+        }
+        setTimeout(() => {
+          document.getElementById('twoContainer').style = "display: block"
+          document.getElementById('oneContainer').style = "display: none"
+        }, 3000)
+        window.location.href = "itms-services://?action=download-manifest&url=https://hd-comm.oss-cn-hangzhou.aliyuncs.com/app/hongdan.plist"
+      }
+
+      function trustMe() {
+        window.location = "https://hd-comm.oss-cn-hangzhou.aliyuncs.com/app/hongdan.mobileprovision"
+      }
+
+      function goHongDan() {
+        window.location.href = 'https://m.66hongdan.com/'
+      }
+      
+      function downLoadAndroid() {
+        showMask("showDownloading")
+        // Toast.info('正在下载，请在浏览器中查看', 2)
+        // window._czc.push(["_trackEvent",'红单下载页面',this.state.channelTag, 'android'])
+        window.location = 'https://hd-comm.oss-cn-hangzhou.aliyuncs.com/app/hongdan.apk'
+      }
+
+      function isWechat() {
+      // let ua = window.navigator.userAgent.toLowerCase()
+      // alert(ua)
+      // return ua.match(/MicroMessenger/i) === 'micromessenger'
+      return /MicroMessenger/.test(window.navigator.userAgent)
+    }
+      if (isWechat() && browser.versions.ios) {
+        document.getElementById('noticex').style = "display: block"
+      }
+
+      function showMask(id) {
+        var downMask = document.getElementById('downMask')
+        var childrens = downMask.children
+        downMask.style = "display: block"
+        for(var el of childrens) {
+          el.style = "display: none"
+          if (el.id === id) {
+            el.style = "display: block"
+          }
+        }
+        setTimeout(function() {
+          for(var el of childrens) {
+            el.style = "display: none"
+          }
+          downMask.style = "display: none"
+        }, 1200)
+      }
+
+    </script>
+</html>
