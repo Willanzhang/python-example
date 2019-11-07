@@ -23,7 +23,7 @@ else:
 
 # 只使用一次 opener.open(request)
 
-# 构建了一个全局的opener，之后所有的请求都可以用urlopen()方式去发送，也附带 Handler 的功能
+# 构建了一个全局的opener，之后所有的请求都可以用 urlopen()方式去发送，也附带 Handler 的功能
 urllib2.install_opener(opener)
 
 request = urllib2.Request("http://www.baidu.com/")
