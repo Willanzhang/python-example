@@ -5,6 +5,7 @@ import urllib
 import urllib2
 from lxml import etree
 
+# 需要安装lxml 不能通过 pip安装
 
 def loadPage(url):
     """
@@ -39,12 +40,13 @@ def loadImage(link):
     content = etree.HTML(html)
     # 取出帖子里每层层主发送的图片连接集合
     #link_list = content.xpath('//img[@class="BDE_Image"]/@src')
-    link_list = content.xpath('//div[@class="post_bubble_middle"]')
-    #link_list = content.xpath('//img[@class="BDE_Image"]/@src')
+    # link_list = content.xpath('//div[@class="post_bubble_middle"]')
+    # //img[@class="BDE_Image"]/@src
+    link_list = content.xpath('//img[@class="BDE_Image"]/@src')
     # 取出每个图片的连接
     for link in link_list:
         print link
-        #writeImage(link)
+        writeImage(link)
 
 
 def writeImage(link):

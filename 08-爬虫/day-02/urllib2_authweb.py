@@ -22,7 +22,7 @@ proxyauth_handler = urllib2.ProxyBasicAuthHandler(passwordMgr)
 # 构建自定义opener  多个handler
 opener = urllib2.build_opener(httpauth_handler, proxyauth_handler)
 
-#urllib2.install_opener(opener)  # 在urllib2 上加载到全局配置   使用urllib2.urlopen(request) 即可
+#urllib2.install_opener(opener)  # 在urllib2 上加载到全局配置   使用urllib2.url即可
 
 request = urllib2.Request("http://192.168.21.52/")
 

@@ -23,7 +23,7 @@ class Spider:
 
         # 获取每页的HTML源码字符串
         html = response.read()
-        #print html
+        print html
 
         # 创建正则表达式规则对象，匹配每页里的段子内容，re.S 表示匹配全部字符串内容
         pattern = re.compile('<div\sclass="f18 mb20">(.*?)</div>', re.S)
