@@ -35,4 +35,4 @@ array = json.dumps(city_list, ensure_ascii=False)
 # array = json.dumps(city_list)
 
 with open('lagoucity.json', 'w') as f:
-    f.write(array.encode('utf-8'))
+	f.write(array.encode('utf-8'))

@@ -35,22 +35,23 @@ desc_list = text.xpath('//div[@class="cat_llb"]/text()')
 # 文章内容列表
 content_list = text.xpath('//div[contains(@id, "endtext")]')
 for index in range(len(node_list)):
-    title = node_list[index].text
-    content = content_list[index].text
-    desc = desc_list[index]
-
-    items = {
-        "title": title,
-        "content": content,
-        "desc": desc,
-        "time": desc.split(u"　　")[0],
-        "click_num": re.compile("\d").search(desc.split(u"　　")[1]).group(0)
-    }
-    arr.insert( 0,items)
-    # print re.compile("\d").search(desc.split(u"　　")[1]).group(0)
+	title = node_list[index].text
+	# content = content_list[index].text
+	# 使用xpath(‘string(.)’)这种方式获取所有文本 
+	content = content_list[index].xpath('string(.)')
+	desc = desc_list[index]
+	items = {
+		"title": title,
+		"content": content.lstrip(),
+		"desc": desc,
+		"time": desc.split(u"　　")[0],
+		"click_num": re.compile("\d").search(desc.split(u"　　")[1]).group(0)
+	}
+	arr.insert(0,items)
+	# print re.compile("\d").search(desc.split(u"　　")[1]).group(0)
   
 with open("qiushi.json", "w") as f:
-    f.write(json.dumps(arr, ensure_ascii = False).encode("utf-8") + "\n")
+	f.write(json.dumps(arr, ensure_ascii = False).encode("utf-8") + "\n")
 
 
 # items ={}
