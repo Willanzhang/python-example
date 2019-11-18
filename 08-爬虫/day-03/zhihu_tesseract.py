@@ -13,8 +13,17 @@ def captcha(captcha_data):
 	# text = raw_input("请输入验证码：")
 	# # 返回用户输入的验证码
 	# return text
+	time.sleep(1)
 	image = Image.open("captcha.jpg")
-	
+	# 机器识别
+	text = image_to_string(image)
+	print "机器识别后的验证码为：" + text
+	command = raw_input("输入Y便是验证正确，统一使用（输入其他建自行输入："）")
+	if (command == 'Y' or command == 'y'):
+    	return text
+	else:
+    	return raw_input("请输入验证码")	
+    	
 
 def zhihuLogin():
 	# 構建一個Session 对象， 可以保存Cookie
