@@ -23,7 +23,7 @@ class ItcastSpider(scrapy.Spider):
 	allowd_domains = ["http://www.itcast.cn/"]
 	# 爬虫起始的url
 	start_urls = ["http://www.itcast.cn/channel/teacher.shtml#aios"]
-
+	    	
 	def parse(self, response):
 		# with open('teacher.html', 'w') as f:
 		# 	f.write(response.body)
@@ -33,7 +33,7 @@ class ItcastSpider(scrapy.Spider):
 		for each in teacher_list:
 			# 将我们得到的数据封装到一个 `ItcastItem` 对象
 			item = ItcastItem()
-    		# name, extract() 將匹配的结果转化为Unicode 字符串
+    		# name.extract() 將匹配的结果转化为Unicode 字符串
 			# 不加 extract() 结果为xpath 匹配对象
  			name = each.xpath("./h3/text()").extract()
 			# title

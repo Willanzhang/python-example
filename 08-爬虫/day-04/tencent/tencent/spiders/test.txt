@@ -1,0 +1,12 @@
+ascii' codec can't encode character u'\u5e74' in position 21: ordinal not in range(128)
+处理方式
+import sys
+
+reload(sys)
+
+sys.setdefaultencoding('utf-8')
+
+
+ more duplicates will be shown (see DUPEFILTER_DEBUG to show all duplicates)   
+
+这是有重复请求了
