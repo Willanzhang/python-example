@@ -1,18 +1,9 @@
-#!/usr/bin/env python
-# -*- encoding: utf-8 -*-
-'''
-@File    :   pipelines.py
-@Time    :   2019/11/22 15:41:14
-@Author  :   William 
-@Version :   1.0
-@License :   (C)Copyright 2019-2020
-@Desc    :   None
-'''
+# -*- coding: utf-8 -*-
 
 # Define your item pipelines here
 #
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
-# See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
+# See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 
 # 导入包 可以直接使用我们设置的settings
 from scrapy.utils.project import get_project_settings
@@ -30,6 +21,7 @@ sys.setdefaultencoding('utf-8')
 
 # class DouyuPipeline(object):
 #     def process_item(self, item, spider):
+#         # print '----------------------------------------------------------------------' + '\n' + '---------------------------------------------------'
 #         return item
 
 class ImagesPipeline(ImagesPipeline):
@@ -42,8 +34,10 @@ class ImagesPipeline(ImagesPipeline):
     
     def item_completed(self, result, item, info):
         image_path = [x["path"] for ok, x in result if ok]
-        os.rename(self.IMAGES_STORE + '/' + image_path[0], \
-            self.IMAGES_STORE + '/' + item['nickname'] + '.jpg')
-        item['imagePath'] = self.IMAGES_STORE + '/' + item['nickname']
+        print image_path
+
+        if len(image_path) > 0:
+            os.rename(self.IMAGES_STORE + '/' + image_path[0], self.IMAGES_STORE + '/' + item['nickname'] + '.jpg')
+            item['imagePath'] = self.IMAGES_STORE + '/' + item['nickname']
 
         return item

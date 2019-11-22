@@ -3,15 +3,14 @@
 # Define here the models for your scraped items
 #
 # See documentation in:
-# https://docs.scrapy.org/en/latest/topics/items.html
+# http://doc.scrapy.org/en/latest/topics/items.html
 
 import scrapy
 
 
 class DouyuItem(scrapy.Item):
     # define the fields for your item here like:
-    # name = scrapy.Field()
-    # define the fields for your item here like:
     nickname = scrapy.Field()
-    imageLink = scrapy.Field()
+    imagelink = scrapy.Field()
     imagePath = scrapy.Field()
+    #pass
