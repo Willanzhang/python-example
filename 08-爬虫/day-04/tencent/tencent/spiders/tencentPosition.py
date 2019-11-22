@@ -29,13 +29,13 @@ class TencentpositionSpider(scrapy.Spider):
     start_urls = [url + str(page)]
 
     # 重载requset 
-    # formRequst 是scrapy 发送post请求的方法
-	# def start_requests(self):
-    #     # get 请求
-    #     yield scrapy.Request(url + str("?timestamp=1574306491995&countryId=&cityId=&bgIds=&productId=&categoryId=&parentCategoryId=&attrId=&keyword=&pageIndex=1&pageSize=10&language=zh-cn&area=cn"), callback=self.parse)
+    # scrapy.formRequst 是scrapy 发送post请求的方法
+    # yield scrapy.formRequst(url, formdata, callback=self.parse)
+	# def start_requests(self):     start_requests 可以初始化 发起请求
+    # scrapy.Request 是 scrapy 发送 get 请求 的方法
+    # yield scrapy.Request(url + str("?timestamp=1574306491995&countryId=&cityId=&bgIds=&productId=&categoryId=&parentCategoryId=&attrId=&keyword=&pageIndex=1&pageSize=10&language=zh-cn&area=cn"), callback=self.parse)
 
     def parse(self, response):
-        print "----------"
         res = json.loads(response.text)
         if (res.get('Code') == 200):
             data =  res.get('Data')["Posts"]
@@ -60,7 +60,6 @@ class TencentpositionSpider(scrapy.Spider):
             self.page += 1
         
         time.sleep(2)
-        print self.url + '****************************************'
         yield scrapy.Request(self.url + str(self.page), callback = self.parse)
 
         # xpath("//a/h4[@class='recruit-title'] | //a/h4") xpath 还可以使用或

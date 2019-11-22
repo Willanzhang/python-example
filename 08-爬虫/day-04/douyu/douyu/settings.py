@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for tencent project
+# Scrapy settings for douyu project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -9,17 +9,17 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'tencent'
+BOT_NAME = 'douyu'
 
-SPIDER_MODULES = ['tencent.spiders']
-NEWSPIDER_MODULE = 'tencent.spiders'
+SPIDER_MODULES = ['douyu.spiders']
+NEWSPIDER_MODULE = 'douyu.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'tencent (+http://www.yourdomain.com)'
+#USER_AGENT = 'douyu (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -40,21 +40,25 @@ ROBOTSTXT_OBEY = True
 
 # Override the default request headers:
 DEFAULT_REQUEST_HEADERS = {
-    "User-Agent" : "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0;",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36",
+    # 'User-Agent': 'ios/6.030 (ios 13.1.3; ; iPhone 8 Plus (A1864/A1898/A1899))',
     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
     # 'Accept-Language': 'en',
 }
 
+# 自己可以写图片保存的位置  写绝对路径 感觉有中文会有问题
+IMAGES_STORE = "/home/share/08-爬虫/day-04/douyu/Images"
+
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'tencent.middlewares.TencentSpiderMiddleware': 543,
+#    'douyu.middlewares.DouyuSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'tencent.middlewares.TencentDownloaderMiddleware': 543,
+#    'douyu.middlewares.DouyuDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -65,8 +69,11 @@ DEFAULT_REQUEST_HEADERS = {
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
+#ITEM_PIPELINES = {
+#    'douyu.pipelines.DouyuPipeline': 300,
+#}
 ITEM_PIPELINES = {
-   'tencent.pipelines.TencentPipeline': 300,
+   'douyu.pipelines.ImagesPipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

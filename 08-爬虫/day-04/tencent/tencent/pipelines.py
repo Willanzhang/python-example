@@ -19,11 +19,12 @@ sys.setdefaultencoding('utf-8')
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 import json
+import time
 
 class TencentPipeline(object):
     # __init__是可选的
     def __init__(self):
-        self.filename = open("teach.json", "w")
+        self.filename = open( str(time.strftime("%Y-%m-%d")) + "-tencent.json", "wa")
 
     # 只有此方法是必须写的 处理 item 数据
     def process_item(self, item, spider):
