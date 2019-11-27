@@ -7,6 +7,7 @@
 
 import time
 import json
+import codecs
 import sys
 
 reload(sys)
@@ -16,7 +17,10 @@ sys.setdefaultencoding('utf-8')
 class DongguanPipeline(object):
     # __init__是可选的
     def __init__(self):
-        self.filename = open( str(time.strftime("%Y-%m-%d")) + "-tencent.json", "wa")
+        # 1
+        # self.filename = open( str(time.strftime("%Y-%m-%d")) + "-tencent.json", "w+")
+        # 2
+        self.filename = codecs.open(str(time.strftime("%Y-%m-%d")) + "-dongguan.json", "w", encoding="utf-8")
 
     # 只有此方法是必须写的 处理 item 数据
     def process_item(self, item, spider):
