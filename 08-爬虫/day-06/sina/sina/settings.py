@@ -19,7 +19,25 @@ NEWSPIDER_MODULE = 'sina.spiders'
 #USER_AGENT = 'sina (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
+
+USER_AGENTS = [
+    'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.0)',
+    'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.2)',
+    'Opera/9.27 (Windows NT 5.2; U; zh-cn)',
+    'Opera/8.0 (Macintosh; PPC Mac OS X; U; en)',
+    'Mozilla/5.0 (Macintosh; PPC Mac OS X; U; en) Opera 8.0',
+    'Mozilla/5.0 (Linux; U; Android 4.0.3; zh-cn; M032 Build/IML74K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30',
+    'Mozilla/5.0 (Windows; U; Windows NT 5.2) AppleWebKit/525.13 (KHTML, like Gecko) Chrome/0.2.149.27 Safari/525.13'
+]
+
+PROXIES = [
+    # {"ip_port" :"121.42.140.113:16816", "user_passwd" : "mr_mao_hacker:sffqry9r"},
+    # {"ip_port" :"202.109.157.65:9000", "user_passwd" : ""},
+    {"ip_port" :"115.239.60.88:21721", "user_passwd" : ""},
+    # {"ip_port" :"125.110.86.90:9000", "user_passwd" : ""},
+    #{"ip_port" :"121.42.140.113:16816", "user_passwd" : ""}
+]
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -46,9 +64,12 @@ ROBOTSTXT_OBEY = True
 
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
-#SPIDER_MIDDLEWARES = {
-#    'sina.middlewares.SinaSpiderMiddleware': 543,
-#}
+
+
+DOWNLOADER_MIDDLEWARES = {
+   'sina.middlewares.RandomUserAgent': 100,
+   'sina.middlewares.RandomProxy': 200,
+}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
@@ -64,9 +85,9 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'sina.pipelines.SinaPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'sina.pipelines.SinaPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
