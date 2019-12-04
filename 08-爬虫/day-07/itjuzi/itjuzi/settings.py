@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for sina project
+# Scrapy settings for itjuzi project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -9,14 +9,14 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'sina'
+BOT_NAME = 'itjuzi'
 
-SPIDER_MODULES = ['sina.spiders']
-NEWSPIDER_MODULE = 'sina.spiders'
+SPIDER_MODULES = ['itjuzi.spiders']
+NEWSPIDER_MODULE = 'itjuzi.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'sina (+http://www.yourdomain.com)'
+#USER_AGENT = 'itjuzi (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
@@ -64,17 +64,15 @@ PROXIES = [
 
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
-
-
-DOWNLOADER_MIDDLEWARES = {
-   'sina.middlewares.RandomUserAgent': 100,
-   'sina.middlewares.RandomProxy': 200,
+SPIDER_MIDDLEWARES = {
+   'itjuzi.middlewares.RandomUserAgent': 200,
+   'itjuzi.middlewares.CookieMiddleware': 300,
 }
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'sina.middlewares.SinaDownloaderMiddleware': 543,
+#    'itjuzi.middlewares.ItjuziDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -85,9 +83,9 @@ DOWNLOADER_MIDDLEWARES = {
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-ITEM_PIPELINES = {
-   'sina.pipelines.SinaPipeline': 300,
-}
+#ITEM_PIPELINES = {
+#    'itjuzi.pipelines.ItjuziPipeline': 300,
+#}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
@@ -109,6 +107,3 @@ ITEM_PIPELINES = {
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
-
-
-# REDIS_URL
