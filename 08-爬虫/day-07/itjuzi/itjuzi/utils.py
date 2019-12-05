@@ -20,4 +20,7 @@ def fetch_one_proxy():
         return False
     content = json.loads(r.content.decode('utf-8'))
     ips = content['data']['proxy_list']
+    file = open('./ips.txt', 'a+')
+    file.write(ips[0] + "\n")
+    file.close()
     return ips[0]

@@ -19,7 +19,7 @@ chrome_options = Options()
 chrome_options.add_argument('--headless')
 chrome_options.add_argument('--disable-gpu')
 url = "https://www.douban.com/"
-# ./chromedriver 文件地址
+# ./chromedriver 文件地址   此文件需要下载和当前浏览器对应的版本
 driver = webdriver.Chrome(executable_path='./chromedriver', chrome_options=chrome_options)
 # driver.set_window_size(1400, 900)
 driver.get(url)
@@ -44,6 +44,7 @@ driver.execute_script(js)
 
 driver.save_screenshot("newdouban.png")
 
-
+# 关闭浏览器
+driver.quit()
 # with open("douban.html", "w") as file:
 #     file.write(driver.page_source)
