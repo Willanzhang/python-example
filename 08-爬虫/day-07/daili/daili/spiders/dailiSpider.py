@@ -33,7 +33,10 @@ class DailispiderSpider(scrapy.Spider):
         for each in cc:
             print '*****************'
             # ip = "".join(each.xpath('.//span/text() | .//div/text()').extract())
-            ip = each.find_elements_by_xpath('.//span/text() | .//div/text() | ./text()').extract()
+            # ip = each.find_elements_by_xpath('.//span/text() | .//div/text() | ./text()').extract()
+            # https://www.cnblogs.com/devtester/p/8550119.html
+            # https://blog.csdn.net/wzyaiwl/article/details/89001219
+            ip = each.text
             # ip = each.extract()
             print ip
             # ip = each.text
