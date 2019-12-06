@@ -34,7 +34,8 @@ USER_AGENTS = [
 PROXIES = [
     # {"ip_port" :"121.42.140.113:16816", "user_passwd" : "mr_mao_hacker:sffqry9r"},
     # {"ip_port" :"202.109.157.65:9000", "user_passwd" : ""},
-    {"ip_port" :"115.239.60.88:21721", "user_passwd" : ""},
+    # {"ip_port" :"211.147.226.4:8118", "user_passwd" : ""},
+    {"ip_port" :"180.153.144.138:8800", "user_passwd" : ""},
     # {"ip_port" :"125.110.86.90:9000", "user_passwd" : ""},
     #{"ip_port" :"121.42.140.113:16816", "user_passwd" : ""}
 ]
@@ -65,16 +66,17 @@ COOKIES_ENABLED = True
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 SPIDER_MIDDLEWARES = {
-   'itjuzi.middlewares.RandomUserAgent': 200,
-   'itjuzi.middlewares.CookieMiddleware': 300,
+    'itjuzi.middlewares.RandomUserAgent': 200,
+    'itjuzi.middlewares.CookieMiddleware': 300,
 }
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
-   'itjuzi.middlewares.RandomUserAgent': 100,
-   'itjuzi.middlewares.RandomProxy': 200,
-#    'itjuzi.middlewares.CookieMiddleware': 300,
+    'scrapy.downloadermiddlewares.retry.RetryMiddleware': 80,
+    'itjuzi.middlewares.RandomUserAgent': 100,
+#    'itjuzi.middlewares.CookieMiddleware': 110,
+    'itjuzi.middlewares.RandomProxy': 200,
 }
 
 # Enable or disable extensions
@@ -88,6 +90,8 @@ DOWNLOADER_MIDDLEWARES = {
 ITEM_PIPELINES = {
    'itjuzi.pipelines.ItjuziPipeline': 300,
 }
+
+LOG_lEVEL = "DEBUG"
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html

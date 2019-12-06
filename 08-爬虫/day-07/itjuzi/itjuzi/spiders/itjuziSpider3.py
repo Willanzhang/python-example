@@ -52,6 +52,8 @@ class Itjuzispider3Spider(scrapy.Spider):
         for cookie in seleniumCookies:
             # 在保存成dict时，我们其实只要cookies中的name和value，而domain等其他都可以不要
             cookies_dict[cookie['name']] = cookie['value']
+        
+        # 这里就可以输出cookie 了
         print cookies_dict
         print 'sleep2222-----------------'
 

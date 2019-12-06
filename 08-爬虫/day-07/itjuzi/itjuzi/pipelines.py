@@ -18,7 +18,7 @@ class ItjuziPipeline(object):
         # 1
         # self.filename = open( str(time.strftime("%Y-%m-%d")) + "-tencent.json", "w+")
         # 2
-        self.filename = codecs.open(str(time.strftime("%Y-%m-%d")) + "-juzi.json", "w", encoding="utf-8")
+        self.filename = codecs.open(str(time.strftime("%Y-%m-%d")) + "-juzi.json", "a+", encoding="utf-8")
 
     # 只有此方法是必须写的 处理 item 数据
     def process_item(self, item, spider):
