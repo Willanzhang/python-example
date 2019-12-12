@@ -43,7 +43,7 @@ class DailispiderSpider(scrapy.Spider):
             # ip = each.text
             with open('ip.json', 'a+') as f:
                 f.write(ip+ '\n')
-        yield item
+        # yield item
 
     def close_spider(self, spider):
         self.driver.quit()
